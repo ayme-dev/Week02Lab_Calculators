@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author 785544
+ * @author aymen
  */
 public class AgeCalculatorServlet extends HttpServlet {
 
@@ -43,18 +43,19 @@ public class AgeCalculatorServlet extends HttpServlet {
             */
         // }
         
+        String message = "";
         String age = request.getParameter("age");
         
-        System.out.println("AGE: " + age);
-        
-        request.setAttribute("age", age);
-        
-        if (age != null) {
-            getServletContext().getRequestDispatcher("/age.jsp").forward(request, response);
+        if(age != null) {
+            int ageVal = Integer.parseInt(age);
+            message = "Your age next birthday is " + (ageVal+1);
         }
         else {
-            getServletContext().getRequestDispatcher("/agecalculator.jsp").forward(request, response);
+            System.out.println("You must give your current age");
         }
+      
+        request.setAttribute("message", message);
+        getServletContext().getRequestDispatcher("/agecalculator.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
