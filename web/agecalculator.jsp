@@ -17,8 +17,12 @@
             <b>Enter your age:</b><input type="text" name="age"/><br/>
             <input type="submit" value="Age next birthday"/>
         </form>
-       
+        <div>
             ${message}
+        </div>
+        <div>
+            <a href="/Week02Lab_Calculators/arithmetic">Arithmetic Calculator</a>
+        </div>
        
     </body>
 </html>

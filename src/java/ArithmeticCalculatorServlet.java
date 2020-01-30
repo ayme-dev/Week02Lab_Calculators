@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author aymen
  */
-public class AgeCalculatorServlet extends HttpServlet {
+public class ArithmeticCalculatorServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,25 +29,18 @@ public class AgeCalculatorServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String message = "";
-        String age = request.getParameter("age");
-
-        if (age != null) {
-            if (!age.equals("")) {
-                try {
-                    int ageVal = Integer.parseInt(age);
-                    message = "Your age next birthday is " + (ageVal + 1);
-                } catch (NumberFormatException e) {
-                    message = "You must enter a number.";
-                }
-            } else {
-                message = "You must give your current age";
-            }
-        }
-
-        request.setAttribute("message", message);
-        getServletContext().getRequestDispatcher("/agecalculator.jsp").forward(request, response);
+        //try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet ArithmeticCalculatorServlet</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Servlet ArithmeticCalculatorServlet at " + request.getContextPath() + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+        //}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
