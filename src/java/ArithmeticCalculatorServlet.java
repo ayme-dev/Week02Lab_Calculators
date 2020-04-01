@@ -29,18 +29,43 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet ArithmeticCalculatorServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet ArithmeticCalculatorServlet at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-        //}
+        
+        String sOne = request.getParameter("one");
+        String sTwo = request.getParameter("two");
+        
+        String bAdd = request.getParameter("add");
+        String bSub = request.getParameter("sub");
+        String bMul = request.getParameter("mul");
+        String bMod = request.getParameter("mod");
+        
+        // Ensuring textfields stay populated with their values
+        request.setAttribute("one", sOne);
+        request.setAttribute("two", sTwo);
+        
+        if (sOne != null && sTwo != null) {
+            if (!sOne.equals("") && !sTwo.equals("")) {
+                try {
+                    int one = Integer.parseInt(sOne);
+                    int two = Integer.parseInt(sTwo);
+                    if (bAdd != null) {
+                        request.setAttribute("res", one + two);
+                    } else if (bSub != null) {
+                        request.setAttribute("res", one - two);
+                    } else if (bMul != null) {
+                        request.setAttribute("res", one * two);
+                    } else if (bMod != null) {
+                        request.setAttribute("res", one % two);
+                    }
+                } catch (NumberFormatException e) {
+                    request.setAttribute("res", "invalid");
+                }
+            } else {
+                request.setAttribute("res", "invalid");
+            }
+        } else {
+            request.setAttribute("res", "---");
+        }
+        getServletContext().getRequestDispatcher("/arithmeticcalculator.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

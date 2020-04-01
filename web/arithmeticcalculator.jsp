@@ -14,8 +14,8 @@
     <body>
         <h1>Arithmetic Calculator</h1>
         <form>
-            <b>First:</b><input type="text" name="first"/><br/>
-            <b>Second:</b><input type="text" name="second"/><br/>
+            <b>First:</b><input type="text" name="one" value="${one}"/><br/>
+            <b>Second:</b><input type="text" name="two" value="${two}"/><br/>
             <input type="submit" name="add" value="+" />
             <input type="submit" name="sub" value="-" />
             <input type="submit" name="mul" value="*" />
